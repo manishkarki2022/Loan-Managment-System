@@ -44,7 +44,10 @@ Route::middleware(['auth','role:admin'])->group(function(){
     Route::get('.admin/user/detail/{id}',[UsersController::class,'userDetail'])->name('user.detail');
     Route::post('/admin/user/{id}/toggle-role',[UsersController::class,'toggleRole'])->name('user.toggle.-role');
 
+
+    //Loan Type Management 
     Route::get('/admin/all/loan/type',[LoanTypesController::class, 'allLoanTypes'])->name('admin.all.loan.types');
+    Route::post('/admin/add/loan_+type',[LoanTypesController::class, 'addLoanTypes'])->name('admin.add.loan.types');
 
 
 

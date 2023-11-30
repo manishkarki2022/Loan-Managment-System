@@ -12,4 +12,7 @@ class LoanTypes extends Model
     protected $table = 'loan_types'; // Specify the table name if it's different from the model's plural form.
 
     protected $fillable = ['name'];
+    public function loan_application(){
+        return $this->hasMany(LoanApplication::class);
+    }
 }

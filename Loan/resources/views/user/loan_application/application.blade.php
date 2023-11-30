@@ -22,10 +22,11 @@
                     <div class="col-span-2 sm:col-span-1">
                         <label for="loan_type" class="block text-gray-700 font-medium">Loan Type</label>
                         <select id="loan_type" name="loan_type" class="bg-gray-200 p-2 mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring focus:ring-blue-200 focus:border-blue-300">
-                            <option value="personal">Personal Loan</option>
-                            <option value="home">Home Loan</option>
-                            <option value="auto">Auto Loan</option>
-                            <option value="business">Business Loan</option>
+                            <option selected>Select Loan</option>
+                         @foreach ($loan_types as $loan)
+                         <option value="{{$loan->id}}">{{$loan->name}}</option>
+                             
+                         @endforeach
                         </select>
                     </div>
                     <div class="col-span-2 sm:col-span-1">

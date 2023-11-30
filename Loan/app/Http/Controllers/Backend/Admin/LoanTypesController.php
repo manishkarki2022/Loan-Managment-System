@@ -24,4 +24,9 @@ class LoanTypesController extends Controller
         return redirect()->back()->with('success', 'Loan type added successfully');
 
     }
+    public function deleteLoanType(LoanTypes $loan_type)
+    {
+        $loan_type->delete();
+        return redirect()->back()->with('success','Loan Type deleted Successfully!');
+    }
 }

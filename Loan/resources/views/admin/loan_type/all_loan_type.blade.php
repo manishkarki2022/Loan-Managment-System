@@ -35,7 +35,12 @@
                         <td class="px-4 py-2">{{$loan_type->name}}</td>
                         <td class="px-4 py-2">
                             <button class="bg-blue-500 text-white py-1 px-2 rounded-md hover:bg-blue-600 focus:outline-none focus:ring focus:ring-blue-200 focus:ring-opacity-50">Update</button>
-                            <button class="bg-red-500 text-white py-1 px-2 rounded-md hover:bg-red-600 focus:outline-none focus:ring focus:ring-red-200 focus:ring-opacity-50">Delete</button>
+                            <button type="submit" class="bg-red-500 text-white py-1 px-2 rounded-md hover:bg-red-600 focus:outline-none focus:ring focus:ring-red-200 focus:ring-opacity-50" onclick="confirmDeleteLoanType({{$loan_type->id}})">Delete</button>
+
+                            <form action="{{route('delete.loan_ty',$loan_type->id)}}" method="POST" id="delete-form{{$loan_type->id}}">
+                                @csrf  
+                                @method('DELETE')
+                            </form>
                         </td>
                     </tr>
                         

@@ -93,6 +93,28 @@
 
         }
     </script>
+<script>
+    function confirmDeleteLoanType(ltId) {
+        Swal.fire({
+            title: "Confirm Delete?",
+            text: "Are you sure you want to delete this Loan Type?",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                document.getElementById('delete-form' + ltId).submit();
+                Swal.fire({
+                    title: "Deleted!",
+                    text: "Your file has been deleted.",
+                    icon: "success"
+                });
+            }
+        });
+    }
+</script>
   
 </body>
 </html>

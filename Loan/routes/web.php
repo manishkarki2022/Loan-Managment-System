@@ -70,6 +70,9 @@ Route::middleware(['auth','role:user'])->group(function(){
     Route::post('/user/update/profile',[UserController::class, 'updateProfile'])->name('user.updateProfile');
     Route::get('/user/view/password',[UserController::class, 'viewPassword'])->name('user.viewPassword');
     Route::post('/user/update/password',[UserController::class, 'updatePassword'])->name('user.updatePassword');
+ 
+    //Loan Application
+    Route::get('/user/loan/application',[LoanController::class, 'loanApplication'])->name('user.loan.application');
 
 });
 

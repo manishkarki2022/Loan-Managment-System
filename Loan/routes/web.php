@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Backend\AdminController;
 use App\Http\Controllers\Backend\UserController;
 use App\Http\Controllers\Backend\Admin\UsersController;
+use App\Http\Controllers\Backend\Admin\LoanTypesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,6 +43,10 @@ Route::middleware(['auth','role:admin'])->group(function(){
     Route::delete('/admin/delete/{user}',[UsersController::class,'deleteUser'])->name('delete.user');
     Route::get('.admin/user/detail/{id}',[UsersController::class,'userDetail'])->name('user.detail');
     Route::post('/admin/user/{id}/toggle-role',[UsersController::class,'toggleRole'])->name('user.toggle.-role');
+
+    Route::get('/admin/all/loan/type',[LoanTypesController::class, 'allLoanTypes'])->name('admin.all.loan.types');
+
+
 
 
 

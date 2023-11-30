@@ -8,4 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class LoanTypes extends Model
 {
     use HasFactory;
+    protected $guarded = [];
 }

@@ -47,9 +47,10 @@ Route::middleware(['auth','role:admin'])->group(function(){
 
     //Loan Type Management 
     Route::get('/admin/all/loan/type',[LoanTypesController::class, 'allLoanTypes'])->name('admin.all.loan.types');
-    Route::post('/admin/add/loan_+type',[LoanTypesController::class, 'addLoanTypes'])->name('admin.add.loan.types');
+    Route::post('/admin/add/loan_type',[LoanTypesController::class, 'addLoanTypes'])->name('admin.add.loan.types');
     Route::delete('/admin/delete/loan_type/{loan_type}',[LoanTypesController::class,'deleteLoanType'])->name('delete.loan_ty');
-
+    Route::get('/admin/loan_type/{id}/edit',[LoanTypesController::class, 'editLoanTypes'])->name('admin.edit.loan.types');
+    Route::post('/admin/loan_type/{id}',[LoanTypesController::class, 'updateLoanTypes'])->name('admin.update.loan.types');
 
 
 

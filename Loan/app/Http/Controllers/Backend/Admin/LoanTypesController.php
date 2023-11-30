@@ -29,4 +29,32 @@ class LoanTypesController extends Controller
         $loan_type->delete();
         return redirect()->back()->with('success','Loan Type deleted Successfully!');
     }
-}
+    public function editLoanTypes($id)
+    {
+        $loan_type = LoanTypes::find($id);
+        return view('admin.loan_type.edit',['loan_type'=>$loan_type]);
+    }
+    public function updateLoanTypes(Request $request, $id)
+    {
+        $request->validate([
+            'loanType' => 'required',
+        ]);
+    
+        $loan_type = LoanTypes::find($id);
+    
+        if (!$loan_type) {
+            return redirect()->route('admin.all.loan.types')->with('error', 'Loan Type not found.');
+        }
+    
+        $loan_type->update([
+            'name' => $request->input('loanType'),
+        ]);
+    
+        return redirect()->route('admin.all.loan.types')->with('success', 'Loan Type updated successfully!');
+    }
+    
+        
+
+
+
+    }

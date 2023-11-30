@@ -10,7 +10,8 @@ class LoanTypesController extends Controller
 {
     public function allLoanTypes()
     {
-        return view('admin.loan_type.all_loan_type');
+        $loan_types = LoanTypes::get();
+        return view('admin.loan_type.all_loan_type',compact('loan_types'));
     }
     public function addLoanTypes(Request $request)
     {

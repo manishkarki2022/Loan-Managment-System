@@ -45,6 +45,28 @@
             }
         });
     </script>
+    <script>
+         function calculateInstallment() {
+            const amountInput = document.getElementById('amount');
+            const installmentCountsInput = document.getElementById('installment_counts');
+            const installmentAmountInput = document.getElementById('installment_amount');
+            const amountPlusTenPercentInput = document.getElementById('amount_plus_ten_percent');
+
+            const amountValue = parseFloat(amountInput.value);
+            const installmentCountsValue = parseFloat(installmentCountsInput.value);
+
+            if (!isNaN(amountValue) && !isNaN(installmentCountsValue) && installmentCountsValue !== 0) {
+                const installmentAmountValue = (amountValue * 1.1) / installmentCountsValue;
+                const amountPlusTenPercentValue = amountValue * 1.1;
+
+                installmentAmountInput.value = installmentAmountValue.toFixed(2);
+                amountPlusTenPercentInput.value = amountPlusTenPercentValue.toFixed(2);
+            } else {
+                installmentAmountInput.value = '';
+                amountPlusTenPercentInput.value = '';
+            }
+        }
+    </script>
   
 </body>
 </html>

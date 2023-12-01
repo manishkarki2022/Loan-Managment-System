@@ -61,6 +61,7 @@ input:checked + .slider:before {
               <th class="py-2 px-4">Amount</th>
               <th class="py-2 px-4">Bank</th>
               <th class="py-2 px-4">Account Number</th>
+              <th class="py-2 px-4">Action</th>
               <th class="py-2 px-4">Approved Loan</th>
               
             </tr>
@@ -82,13 +83,18 @@ input:checked + .slider:before {
                         <td class="py-2 px-4">{{ $ln->bank }}</td>
                         <td class="py-2 px-4">{{ $ln->account }}</td>
                         <td class="py-2 px-4">
-                            <form action="{{ route('user.toggle.-role', $ln->id) }}" method="POST">
-                                @csrf
-                                <label class="switch">
-                                    <input type="checkbox" name="role" onchange="this.form.submit()" {{ ($ln->status === 'admin') ? 'checked' : '' }}>
-                                    <span class="slider"></span>
-                                </label>
-                            </form>
+                          <form action="{{route('loan.toggle-status',$ln->id)}}" method="POST">
+                            @csrf
+                          <label class="switch">
+                              <input type="checkbox" name="status" onchange="this.form.submit()" {{($ln->status==='approved')?'checked':''}}>
+                              <span class="slider"></span>
+                            </label>
+                          </form>
+                        </td>
+                        <td>
+                          <a class="bg-blue-500 text-white py-1 px-3 rounded-md hover:bg-blue-600 transition duration-200" href="{{route('loan.detail',$ln->id)}}">
+                            View Details
+                        </a>
                         </td>
                       
                     </tr>

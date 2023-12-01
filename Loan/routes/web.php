@@ -56,6 +56,8 @@ Route::middleware(['auth','role:admin'])->group(function(){
 
     //:Loan Application Management
     Route::get('/admin/all/loan/applications',[LoanController::class, 'allLoanApplication'])->name('admin.all.loan.application');
+    Route::get('.admin/loan/detail/{id}',[LoanController::class,'loanDetail'])->name('loan.detail');
+    Route::post('/admin/loan/{id}/toggle-status',[LoanController::class,'toggleStatus'])->name('loan.toggle-status');
 
 
 

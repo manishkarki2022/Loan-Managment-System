@@ -43,4 +43,15 @@ class LoanController extends Controller
         return redirect()->back()->with('success','Loan Applied Successfully');
 
     }
+    public function loanDetail($id){
+        $loan = LoanApplication::find($id);
+        return view('admin.loan_application.detail',compact('loan'));
+    }
+    public function toggleStatus(Request $request,$id)
+    {
+       $loan = LoanApplication::find($id) ;
+       $loan->status = ($request->has('status'))?'approved':'not_approved';
+       $loan->save();
+       return redirect()->back()->with('success','Loan Status updated successfully');
+    }
 }

@@ -83,8 +83,8 @@ input:checked + .slider:before {
                   
               </td>
               <td class="py-2 px-4">
-                <a href="{{route('user.detail',$user->id)}}">
-                <button class="bg-blue-500 text-white py-1 px-3 rounded-md hover:bg-blue-600 transition duration-200">View Details</button>
+                <a class="bg-blue-500 text-white py-1 px-3 rounded-md hover:bg-blue-600 transition duration-200" href="{{route('user.detail',$user->id)}}">
+                  View Details
               </a>
                 <button class="bg-red-500 text-white py-1 px-3 rounded-md hover:bg-red-600 transition duration-200 ml-2" onclick="confirmDelete({{$user->id}})" type="button">Delete</button>
                 <form action="{{route('delete.user',$user->id)}}" method="POST" id="delete-form{{$user->id}}">

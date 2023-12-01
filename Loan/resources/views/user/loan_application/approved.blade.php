@@ -1,4 +1,4 @@
-@extends('admin.dashboard')
+@extends('user.dashboard')
 @section('content')
 
 <style>
@@ -61,7 +61,8 @@ input:checked + .slider:before {
               <th class="py-2 px-4">Amount</th>
               <th class="py-2 px-4">Bank</th>
               <th class="py-2 px-4">Account Number</th>
-              <th class="py-2 px-4">Action</th>
+              <th class="py-2 px-4">Loan Status</th>
+             
              
               
             </tr>
@@ -70,7 +71,7 @@ input:checked + .slider:before {
             @if ($loan->count() == 0)
                 <tr>
                     <td colspan="8" class="text-center">
-                        <h1>No loan Application</h1>
+                        <h1>No Aprroved Loan Application</h1>
                     </td>
                 </tr>
             @else
@@ -82,12 +83,9 @@ input:checked + .slider:before {
                         <td class="py-2 px-4">{{ $ln->amount }}</td>
                         <td class="py-2 px-4">{{ $ln->bank }}</td>
                         <td class="py-2 px-4">{{ $ln->account }}</td>
+                        <td class="py-2 px-4" style="color: green">{{ $ln->status }}</td>
                       
-                        <td>
-                          <a class="bg-blue-500 text-white py-1 px-3 rounded-md hover:bg-blue-600 transition duration-200" href="{{route('loan.detail',$ln->id)}}">
-                            View Details
-                        </a>
-                        </td>
+                       
                       
                     </tr>
                 @endforeach

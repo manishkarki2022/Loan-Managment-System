@@ -56,6 +56,9 @@ Route::middleware(['auth','role:admin'])->group(function(){
 
     //:Loan Application Management
     Route::get('/admin/all/loan/applications',[LoanController::class, 'allLoanApplication'])->name('admin.all.loan.application');
+    Route::get('.admin/loan/detail/{id}',[LoanController::class,'loanDetail'])->name('loan.detail');
+    Route::post('/admin/loan/{id}/toggle-status',[LoanController::class,'toggleStatus'])->name('loan.toggle-status');
+    Route::get('/admin/all/approved/loan',[LoanController::class, 'allApprovedLoan'])->name('admin.all.approved.loan');
 
 
 
@@ -73,6 +76,8 @@ Route::middleware(['auth','role:user'])->group(function(){
  
     //Loan Application
     Route::get('/user/loan/application',[LoanController::class, 'loanApplication'])->name('user.loan.application');
+    Route::post('/user/loan/store',[LoanController::class, 'loanStore'])->name('user.loan.store');
+    Route::get('/user/approved/loan',[LoanController::class, 'approvedLoan'])->name('user.approved.loan');
 
 });
 

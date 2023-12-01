@@ -6,6 +6,9 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\LoanApplication;
 use App\Models\LoanTypes;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
 
 class LoanController extends Controller
 {
@@ -17,5 +20,27 @@ class LoanController extends Controller
     public function loanApplication()
     {   $loan_types = LoanTypes::all();
         return view('user.loan_application.application',compact('loan_types'));
+    }
+    public function loanStore(Request $request)
+    {
+        $id = Auth::user()->id;
+        $data = User::find($id);
+        $today = Carbon::now();
+        $formattedDate = $today->format('Y-m-d');
+        LoanApplication::insert([
+            'name'=>$data->name,
+            'email'=>$data->email,
+            'amount'=>$request->amount,
+            'bank'=>$request->bank,
+            'account'=>$request->account_no,
+            'loan_type'=>$request->loan_type,
+            'installment_count'=>$request->installment_counts,
+            'installment_payable'=>$request->installment_amount,
+            'amount_payable'=>$request->amount_payable,
+            'date_applied'=>$formattedDate,
+            'status'=>'not_approved',
+        ]);
+        return redirect()->back()->with('success','Loan Applied Successfully');
+
     }
 }

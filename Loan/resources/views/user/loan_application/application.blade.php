@@ -5,7 +5,8 @@
     <div class="p-6 mx-auto max-w-3xl">
         <div class="bg-white shadow-md rounded-lg p-6">
             <h2 class="text-2xl font-semibold mb-4">Loan Application</h2>
-            <form>
+            <form method="POST" action="{{route('user.loan.store')}}">
+                @csrf
                 <div class="grid grid-cols-2 gap-4">
                     <div class="col-span-2 sm:col-span-1">
                         <label for="amount" class="block text-gray-700 font-medium">Loan Amount</label>
@@ -31,15 +32,15 @@
                     </div>
                     <div class="col-span-2 sm:col-span-1">
                         <label for="amount" class="block text-gray-700 font-medium">Installment Count</label>
-                        <input type="text" id="installment_counts" name="amount" placeholder="Installment Count" oninput="calculateInstallment()" class="bg-gray-200 p-2 mt-1 mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring focus:ring-blue-200 focus:border-blue-300">
+                        <input type="text" id="installment_counts" name="installment_counts" placeholder="Installment Count" oninput="calculateInstallment()" class="bg-gray-200 p-2 mt-1 mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring focus:ring-blue-200 focus:border-blue-300">
                     </div>
                     <div class="col-span-2 sm:col-span-1">
                         <label for="bank" class="block text-gray-700 font-medium">Installment Amount</label>
-                        <input type="text" id="installment_amount" name="bank" placeholder="Installment Amount" class="bg-gray-200 p-2 mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring focus:ring-blue-200 focus:border-blue-300">
+                        <input type="text" id="installment_amount" name="installment_amount" placeholder="Installment Amount" class="bg-gray-200 p-2 mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring focus:ring-blue-200 focus:border-blue-300">
                     </div>
                     <div class="col-span-2 sm:col-span-1">
                         <label for="bank" class="block text-gray-700 font-medium">Amount (+10% Interest)</label>
-                        <input type="text" id="amount_plus_ten_percent" name="bank" placeholder="Amount (+10%)"  class="bg-gray-200 p-2 mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring focus:ring-blue-200 focus:border-blue-300">
+                        <input type="text" id="amount_plus_ten_percent" name="amount_payable" placeholder="Amount (+10%)"  class="bg-gray-200 p-2 mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring focus:ring-blue-200 focus:border-blue-300">
                     </div>
                     <!-- Other input fields ... -->
                 </div>

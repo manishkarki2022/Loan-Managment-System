@@ -70,7 +70,7 @@ input:checked + .slider:before {
             @if ($loan->count() == 0)
                 <tr>
                     <td colspan="8" class="text-center">
-                        <h1>No loan Application</h1>
+                        <h1>No Aprroved Loan Application</h1>
                     </td>
                 </tr>
             @else

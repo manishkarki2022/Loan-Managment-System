@@ -8,14 +8,20 @@ use App\Models\LoanApplication;
 use App\Models\LoanTypes;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
 
 class LoanController extends Controller
 {
     public function allLoanApplication()
     {
-        $loan = LoanApplication::get();
+        $loan =DB::table('loan_application')->where('status','not_approved')->get();
         return view('admin.loan_application.all', compact('loan'));
+    }
+    public function allApprovedLoan()
+    {
+        $loan =DB::table('loan_application')->where('status','approved')->get();
+        return view('admin.loan_application.approved', compact('loan'));
     }
     public function loanApplication()
     {   $loan_types = LoanTypes::all();

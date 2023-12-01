@@ -53,7 +53,7 @@
                 </button>
                 <ul x-show="open" class="ml-4 mt-2 space-y-2">
                     <li><a href="{{route('admin.all.loan.application')}}" class="text-gray-300 hover:text-white">View Loan Application</a></li>
-                    {{-- <li><a href="#" class="text-gray-300 hover:text-white">Add Product</a></li> --}}
+                    <li><a href="{{route('admin.all.approved.loan')}}" class="text-gray-300 hover:text-white">View Approved Loan </a></li>
                 </ul>
             </div>
         </li>

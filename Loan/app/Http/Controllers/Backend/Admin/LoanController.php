@@ -60,4 +60,11 @@ class LoanController extends Controller
        $loan->save();
        return redirect()->back()->with('success','Loan Status updated successfully');
     }
+    public function approvedLoan()
+    {   
+        $email = auth()->user()->email;
+        $loan =DB::table('loan_application')->where('email',$email)->where('status',"approved")->get();
+        return view('user.loan_application.approved', compact('loan'));
+    }
+   
 }

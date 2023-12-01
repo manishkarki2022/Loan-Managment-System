@@ -77,6 +77,7 @@ Route::middleware(['auth','role:user'])->group(function(){
     //Loan Application
     Route::get('/user/loan/application',[LoanController::class, 'loanApplication'])->name('user.loan.application');
     Route::post('/user/loan/store',[LoanController::class, 'loanStore'])->name('user.loan.store');
+    Route::get('/user/approved/loan',[LoanController::class, 'approvedLoan'])->name('user.approved.loan');
 
 });
 
